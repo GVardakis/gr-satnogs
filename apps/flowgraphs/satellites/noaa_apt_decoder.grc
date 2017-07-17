@@ -2600,7 +2600,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>split</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>sync</key>
