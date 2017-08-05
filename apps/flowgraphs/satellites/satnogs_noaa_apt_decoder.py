@@ -5,7 +5,7 @@
 # Title: NOAA APT Decoder
 # Author: Manolis Surligas, George Vardakis
 # Description: A NOAA APT Decoder with automatic image synchronization
-# Generated: Sat Aug  5 13:54:46 2017
+# Generated: Sat Aug  5 14:37:41 2017
 ##################################################
 
 from gnuradio import analog
@@ -53,7 +53,7 @@ class satnogs_noaa_apt_decoder(gr.top_block):
         self.samp_rate_rx = samp_rate_rx = satnogs.hw_rx_settings[rx_sdr_device]['samp_rate']
         self.first_stage_decimation = first_stage_decimation = 4
         
-        self.noaa_filter_taps = noaa_filter_taps = firdes.low_pass(1.0, samp_rate_rx /first_stage_decimation, 16.5e3, 4e3, firdes.WIN_HAMMING, 6.76)
+        self.noaa_filter_taps = noaa_filter_taps = firdes.low_pass(1.0, samp_rate_rx /first_stage_decimation, 16e3, 4.5e3, firdes.WIN_HAMMING, 6.76)
           
         self.initial_bandwidth = initial_bandwidth = 100e3
         
@@ -104,6 +104,8 @@ class satnogs_noaa_apt_decoder(gr.top_block):
         self.freq_xlating_fir_filter_xxx_0 = filter.freq_xlating_fir_filter_ccc(first_stage_decimation, (first_stage_filter_taps), lo_offset, samp_rate_rx)
         self.fft_filter_xxx_0 = filter.fft_filter_ccc(int(samp_rate_rx/ first_stage_decimation / initial_bandwidth), (noaa_filter_taps), 1)
         self.fft_filter_xxx_0.declare_sample_delay(0)
+        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_gr_complex*1, '/tmp/out_iq.dat', False)
+        self.blocks_file_sink_0.set_unbuffered(False)
         self.blocks_complex_to_mag_0 = blocks.complex_to_mag(1)
         self.band_pass_filter_0 = filter.fir_filter_fff(1, firdes.band_pass(
         	6, samp_rate_rx/ ( first_stage_decimation  * int(samp_rate_rx/ first_stage_decimation / initial_bandwidth)) / audio_decimation, 500, 4.2e3, 200, firdes.WIN_HAMMING, 6.76))
@@ -127,6 +129,7 @@ class satnogs_noaa_apt_decoder(gr.top_block):
         self.connect((self.rational_resampler_xxx_0, 0), (self.hilbert_fc_0, 0))    
         self.connect((self.rational_resampler_xxx_0_0, 0), (self.satnogs_noaa_apt_sink_0, 0))    
         self.connect((self.rational_resampler_xxx_1, 0), (self.satnogs_ogg_encoder_0, 0))    
+        self.connect((self.satnogs_coarse_doppler_correction_cc_0, 0), (self.blocks_file_sink_0, 0))    
         self.connect((self.satnogs_coarse_doppler_correction_cc_0, 0), (self.fft_filter_xxx_0, 0))    
         self.connect((self.satnogs_coarse_doppler_correction_cc_0, 0), (self.satnogs_waterfall_sink_0, 0))    
 
