@@ -560,6 +560,49 @@ TX sampling rate</value>
     </param>
     <param>
       <key>_coordinate</key>
+      <value>(183, 547)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>decoded_data_file_path</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value></value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value></value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>string</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>/tmp/.satnogs/data/noaa</value>
+    </param>
+  </block>
+  <block>
+    <key>parameter</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
       <value>(183, 634)</value>
     </param>
     <param>
@@ -650,7 +693,7 @@ TX sampling rate</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -854,7 +897,7 @@ TX sampling rate</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -981,49 +1024,6 @@ TX sampling rate</value>
     <param>
       <key>value</key>
       <value>satnogs.not_set_rx_if_gain</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(183, 547)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>image_file_path</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value></value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>string</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>/tmp/noaa.png</value>
     </param>
   </block>
   <block>
@@ -2658,7 +2658,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>fbw</key>
@@ -2952,7 +2952,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>filename_png</key>
-      <value>image_file_path</value>
+      <value>decoded_data_file_path</value>
     </param>
     <param>
       <key>height</key>
@@ -2987,7 +2987,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>filename</key>
@@ -3093,7 +3093,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>fft_size</key>
