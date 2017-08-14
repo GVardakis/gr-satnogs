@@ -885,7 +885,7 @@ TX sampling rate</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>2</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -2673,7 +2673,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>2</value>
     </param>
     <param>
       <key>fbw</key>
@@ -2732,7 +2732,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>2</value>
     </param>
     <param>
       <key>fbw</key>
@@ -2791,7 +2791,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>2</value>
     </param>
     <param>
       <key>fbw</key>
@@ -3226,7 +3226,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>filename</key>
@@ -3332,7 +3332,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>fft_size</key>
