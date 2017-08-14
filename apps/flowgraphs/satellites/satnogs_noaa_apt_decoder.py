@@ -5,7 +5,7 @@
 # Title: NOAA APT Decoder
 # Author: Manolis Surligas, George Vardakis
 # Description: A NOAA APT Decoder with automatic image synchronization
-# Generated: Mon Aug 14 17:22:48 2017
+# Generated: Mon Aug 14 17:48:46 2017
 ##################################################
 
 from gnuradio import analog
@@ -66,7 +66,6 @@ class satnogs_noaa_apt_decoder(gr.top_block):
         ##################################################
         # Blocks
         ##################################################
-        self.satnogs_waterfall_sink_0 = satnogs.waterfall_sink(samp_rate_rx/ ( first_stage_decimation  * int(samp_rate_rx/ first_stage_decimation / initial_bandwidth)), 0.0, 8, 1024, waterfall_file_path, 0)
         self.satnogs_tcp_rigctl_msg_source_0 = satnogs.tcp_rigctl_msg_source("127.0.0.1", rigctl_port, False, 1000/doppler_correction_per_sec, 1500)
         self.satnogs_noaa_apt_sink_0 = satnogs.noaa_apt_sink(decoded_data_file_path, 2080, 1500, bool(split_images), bool(sync), bool(flip_images))
         self.satnogs_iq_sink_0 = satnogs.iq_sink(32767, iq_file_path, False, enable_iq_dump)
@@ -133,7 +132,6 @@ class satnogs_noaa_apt_decoder(gr.top_block):
         self.connect((self.rational_resampler_xxx_0_0, 0), (self.satnogs_noaa_apt_sink_0, 0))    
         self.connect((self.rational_resampler_xxx_2, 0), (self.satnogs_iq_sink_0, 0))    
         self.connect((self.satnogs_coarse_doppler_correction_cc_0, 0), (self.fft_filter_xxx_0, 0))    
-        self.connect((self.satnogs_coarse_doppler_correction_cc_0, 0), (self.satnogs_waterfall_sink_0, 0))    
 
     def get_antenna(self):
         return self.antenna
