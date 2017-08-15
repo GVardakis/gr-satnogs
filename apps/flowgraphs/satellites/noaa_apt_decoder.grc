@@ -136,7 +136,7 @@ in acceptable levels especially for embedded devices.</value>
     </param>
     <param>
       <key>value</key>
-      <value>4</value>
+      <value>2</value>
     </param>
   </block>
   <block>
@@ -286,7 +286,7 @@ TX sampling rate</value>
     </param>
     <param>
       <key>value</key>
-      <value>satnogs.hw_rx_settings[rx_sdr_device]['samp_rate']</value>
+      <value>satnogs.hw_rx_settings[rx_sdr_device]['samp_rate']/2</value>
     </param>
   </block>
   <block>
@@ -2803,7 +2803,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>fbw</key>
@@ -3081,7 +3081,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>filename</key>
