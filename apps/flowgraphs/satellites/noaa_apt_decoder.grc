@@ -2803,7 +2803,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>fbw</key>
@@ -2811,7 +2811,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(896, 232)</value>
+      <value>(944, 232)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3081,7 +3081,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>filename</key>
@@ -3089,7 +3089,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1112, 236)</value>
+      <value>(1176, 236)</value>
     </param>
     <param>
       <key>_rotation</key>

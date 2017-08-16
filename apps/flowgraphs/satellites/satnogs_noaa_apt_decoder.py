@@ -5,7 +5,7 @@
 # Title: NOAA APT Decoder
 # Author: Manolis Surligas, George Vardakis
 # Description: A NOAA APT Decoder with automatic image synchronization
-# Generated: Wed Aug 16 15:30:24 2017
+# Generated: Wed Aug 16 17:10:30 2017
 ##################################################
 
 from gnuradio import analog
@@ -68,7 +68,14 @@ class satnogs_noaa_apt_decoder(gr.top_block):
         ##################################################
         self.satnogs_tcp_rigctl_msg_source_0 = satnogs.tcp_rigctl_msg_source("127.0.0.1", rigctl_port, False, 1000/doppler_correction_per_sec, 1500)
         self.satnogs_noaa_apt_sink_0 = satnogs.noaa_apt_sink(decoded_data_file_path, 2080, 1500, bool(split_images), bool(sync), bool(flip_images))
+        self.satnogs_iq_sink_0 = satnogs.iq_sink(32767, iq_file_path, False, enable_iq_dump)
         self.satnogs_coarse_doppler_correction_cc_0 = satnogs.coarse_doppler_correction_cc(rx_freq, samp_rate_rx /first_stage_decimation)
+        self.rational_resampler_xxx_2 = filter.rational_resampler_ccc(
+                interpolation=48000,
+                decimation=int(samp_rate_rx/ ( first_stage_decimation  * int(samp_rate_rx/ first_stage_decimation / initial_bandwidth)) / audio_decimation),
+                taps=None,
+                fractional_bw=None,
+        )
         self.rational_resampler_xxx_0_0 = filter.rational_resampler_fff(
                 interpolation=1,
                 decimation=4,
@@ -116,12 +123,14 @@ class satnogs_noaa_apt_decoder(gr.top_block):
         self.connect((self.band_pass_filter_0, 0), (self.fir_filter_xxx_1, 0))
         self.connect((self.blocks_complex_to_mag_0, 0), (self.rational_resampler_xxx_0_0, 0))
         self.connect((self.fft_filter_xxx_0, 0), (self.analog_wfm_rcv_0, 0))
+        self.connect((self.fft_filter_xxx_0, 0), (self.rational_resampler_xxx_2, 0))
         self.connect((self.fir_filter_xxx_1, 0), (self.rational_resampler_xxx_0, 0))
         self.connect((self.freq_xlating_fir_filter_xxx_0, 0), (self.satnogs_coarse_doppler_correction_cc_0, 0))
         self.connect((self.hilbert_fc_0, 0), (self.blocks_complex_to_mag_0, 0))
         self.connect((self.osmosdr_source_0, 0), (self.freq_xlating_fir_filter_xxx_0, 0))
         self.connect((self.rational_resampler_xxx_0, 0), (self.hilbert_fc_0, 0))
         self.connect((self.rational_resampler_xxx_0_0, 0), (self.satnogs_noaa_apt_sink_0, 0))
+        self.connect((self.rational_resampler_xxx_2, 0), (self.satnogs_iq_sink_0, 0))
         self.connect((self.satnogs_coarse_doppler_correction_cc_0, 0), (self.fft_filter_xxx_0, 0))
 
     def get_antenna(self):
