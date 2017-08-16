@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.11'?>
+<?grc format='1' created='3.7.10'?>
 <flow_graph>
   <timestamp>Mon Apr 10 23:26:02 2017</timestamp>
   <block>
@@ -713,7 +713,7 @@ TX sampling rate</value>
     </param>
     <param>
       <key>value</key>
-      <value>0</value>
+      <value>1</value>
     </param>
   </block>
   <block>
@@ -2799,7 +2799,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>decim</key>
-      <value>int(samp_rate_rx/ ( first_stage_decimation  * int(samp_rate_rx/ first_stage_decimation / initial_bandwidth)) / audio_decimation)</value>
+      <value>int(samp_rate_rx /first_stage_decimation)</value>
     </param>
     <param>
       <key>_enabled</key>

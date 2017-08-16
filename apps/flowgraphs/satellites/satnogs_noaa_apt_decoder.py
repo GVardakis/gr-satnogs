@@ -5,7 +5,7 @@
 # Title: NOAA APT Decoder
 # Author: Manolis Surligas, George Vardakis
 # Description: A NOAA APT Decoder with automatic image synchronization
-# Generated: Wed Aug 16 17:10:30 2017
+# Generated: Wed Aug 16 18:55:32 2017
 ##################################################
 
 from gnuradio import analog
@@ -23,7 +23,7 @@ import time
 
 class satnogs_noaa_apt_decoder(gr.top_block):
 
-    def __init__(self, antenna=satnogs.not_set_antenna, bb_gain=satnogs.not_set_rx_bb_gain, decoded_data_file_path='/tmp/.satnogs/data/noaa', dev_args=satnogs.not_set_dev_args, doppler_correction_per_sec=20, enable_iq_dump=0, file_path='/tmp/test.ogg', flip_images=0, if_gain=satnogs.not_set_rx_if_gain, iq_file_path='/tmp/iq.dat', lo_offset=100e3, ppm=0, rf_gain=satnogs.not_set_rx_rf_gain, rigctl_port=4532, rx_freq=90.4e6, rx_sdr_device='usrpb200', split_images=0, sync=1, waterfall_file_path='/tmp/waterfall.dat'):
+    def __init__(self, antenna=satnogs.not_set_antenna, bb_gain=satnogs.not_set_rx_bb_gain, decoded_data_file_path='/tmp/.satnogs/data/noaa', dev_args=satnogs.not_set_dev_args, doppler_correction_per_sec=20, enable_iq_dump=1, file_path='/tmp/test.ogg', flip_images=0, if_gain=satnogs.not_set_rx_if_gain, iq_file_path='/tmp/iq.dat', lo_offset=100e3, ppm=0, rf_gain=satnogs.not_set_rx_rf_gain, rigctl_port=4532, rx_freq=90.4e6, rx_sdr_device='usrpb200', split_images=0, sync=1, waterfall_file_path='/tmp/waterfall.dat'):
         gr.top_block.__init__(self, "NOAA APT Decoder")
 
         ##################################################
@@ -54,13 +54,13 @@ class satnogs_noaa_apt_decoder(gr.top_block):
         ##################################################
         self.samp_rate_rx = samp_rate_rx = 250e3
         self.first_stage_decimation = first_stage_decimation = 2
-
+        
         self.noaa_filter_taps = noaa_filter_taps = firdes.low_pass(1.0, samp_rate_rx /first_stage_decimation, 16.5e3, 4e3, firdes.WIN_HAMMING, 6.76)
-
+          
         self.initial_bandwidth = initial_bandwidth = 100e3
-
+        
         self.first_stage_filter_taps = first_stage_filter_taps = firdes.low_pass(1.0, 1.0, 0.4, 0.1, firdes.WIN_HAMMING, 6.76)
-
+          
         self.audio_decimation = audio_decimation = 2
 
         ##################################################
@@ -72,7 +72,7 @@ class satnogs_noaa_apt_decoder(gr.top_block):
         self.satnogs_coarse_doppler_correction_cc_0 = satnogs.coarse_doppler_correction_cc(rx_freq, samp_rate_rx /first_stage_decimation)
         self.rational_resampler_xxx_2 = filter.rational_resampler_ccc(
                 interpolation=48000,
-                decimation=int(samp_rate_rx/ ( first_stage_decimation  * int(samp_rate_rx/ first_stage_decimation / initial_bandwidth)) / audio_decimation),
+                decimation=int(samp_rate_rx /first_stage_decimation),
                 taps=None,
                 fractional_bw=None,
         )
@@ -100,7 +100,7 @@ class satnogs_noaa_apt_decoder(gr.top_block):
         self.osmosdr_source_0.set_bb_gain(satnogs.handle_rx_bb_gain(rx_sdr_device, bb_gain), 0)
         self.osmosdr_source_0.set_antenna(satnogs.handle_rx_antenna(rx_sdr_device, antenna), 0)
         self.osmosdr_source_0.set_bandwidth(samp_rate_rx, 0)
-
+          
         self.hilbert_fc_0 = filter.hilbert_fc(65, firdes.WIN_HAMMING, 6.76)
         self.freq_xlating_fir_filter_xxx_0 = filter.freq_xlating_fir_filter_ccc(first_stage_decimation, (first_stage_filter_taps), lo_offset, samp_rate_rx)
         self.fir_filter_xxx_1 = filter.fir_filter_fff(2, ([0.5, 0.5]))
@@ -118,20 +118,20 @@ class satnogs_noaa_apt_decoder(gr.top_block):
         ##################################################
         # Connections
         ##################################################
-        self.msg_connect((self.satnogs_tcp_rigctl_msg_source_0, 'freq'), (self.satnogs_coarse_doppler_correction_cc_0, 'freq'))
-        self.connect((self.analog_wfm_rcv_0, 0), (self.band_pass_filter_0, 0))
-        self.connect((self.band_pass_filter_0, 0), (self.fir_filter_xxx_1, 0))
-        self.connect((self.blocks_complex_to_mag_0, 0), (self.rational_resampler_xxx_0_0, 0))
-        self.connect((self.fft_filter_xxx_0, 0), (self.analog_wfm_rcv_0, 0))
-        self.connect((self.fft_filter_xxx_0, 0), (self.rational_resampler_xxx_2, 0))
-        self.connect((self.fir_filter_xxx_1, 0), (self.rational_resampler_xxx_0, 0))
-        self.connect((self.freq_xlating_fir_filter_xxx_0, 0), (self.satnogs_coarse_doppler_correction_cc_0, 0))
-        self.connect((self.hilbert_fc_0, 0), (self.blocks_complex_to_mag_0, 0))
-        self.connect((self.osmosdr_source_0, 0), (self.freq_xlating_fir_filter_xxx_0, 0))
-        self.connect((self.rational_resampler_xxx_0, 0), (self.hilbert_fc_0, 0))
-        self.connect((self.rational_resampler_xxx_0_0, 0), (self.satnogs_noaa_apt_sink_0, 0))
-        self.connect((self.rational_resampler_xxx_2, 0), (self.satnogs_iq_sink_0, 0))
-        self.connect((self.satnogs_coarse_doppler_correction_cc_0, 0), (self.fft_filter_xxx_0, 0))
+        self.msg_connect((self.satnogs_tcp_rigctl_msg_source_0, 'freq'), (self.satnogs_coarse_doppler_correction_cc_0, 'freq'))    
+        self.connect((self.analog_wfm_rcv_0, 0), (self.band_pass_filter_0, 0))    
+        self.connect((self.band_pass_filter_0, 0), (self.fir_filter_xxx_1, 0))    
+        self.connect((self.blocks_complex_to_mag_0, 0), (self.rational_resampler_xxx_0_0, 0))    
+        self.connect((self.fft_filter_xxx_0, 0), (self.analog_wfm_rcv_0, 0))    
+        self.connect((self.fft_filter_xxx_0, 0), (self.rational_resampler_xxx_2, 0))    
+        self.connect((self.fir_filter_xxx_1, 0), (self.rational_resampler_xxx_0, 0))    
+        self.connect((self.freq_xlating_fir_filter_xxx_0, 0), (self.satnogs_coarse_doppler_correction_cc_0, 0))    
+        self.connect((self.hilbert_fc_0, 0), (self.blocks_complex_to_mag_0, 0))    
+        self.connect((self.osmosdr_source_0, 0), (self.freq_xlating_fir_filter_xxx_0, 0))    
+        self.connect((self.rational_resampler_xxx_0, 0), (self.hilbert_fc_0, 0))    
+        self.connect((self.rational_resampler_xxx_0_0, 0), (self.satnogs_noaa_apt_sink_0, 0))    
+        self.connect((self.rational_resampler_xxx_2, 0), (self.satnogs_iq_sink_0, 0))    
+        self.connect((self.satnogs_coarse_doppler_correction_cc_0, 0), (self.fft_filter_xxx_0, 0))    
 
     def get_antenna(self):
         return self.antenna
@@ -324,7 +324,7 @@ def argument_parser():
         "", "--doppler-correction-per-sec", dest="doppler_correction_per_sec", type="intx", default=20,
         help="Set doppler_correction_per_sec [default=%default]")
     parser.add_option(
-        "", "--enable-iq-dump", dest="enable_iq_dump", type="intx", default=0,
+        "", "--enable-iq-dump", dest="enable_iq_dump", type="intx", default=1,
         help="Set enable_iq_dump [default=%default]")
     parser.add_option(
         "", "--file-path", dest="file_path", type="string", default='/tmp/test.ogg',
