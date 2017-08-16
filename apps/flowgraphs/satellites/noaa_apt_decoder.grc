@@ -286,7 +286,7 @@ TX sampling rate</value>
     </param>
     <param>
       <key>value</key>
-      <value>satnogs.hw_rx_settings[rx_sdr_device]['samp_rate']/2</value>
+      <value>250e3</value>
     </param>
   </block>
   <block>
@@ -740,7 +740,7 @@ TX sampling rate</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(718, 115)</value>
+      <value>(760, 116)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2744,7 +2744,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>fbw</key>
@@ -3034,7 +3034,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(471, 119)</value>
+      <value>(528, 120)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3179,7 +3179,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>filename</key>
@@ -3226,7 +3226,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(223, 47)</value>
+      <value>(176, 88)</value>
     </param>
     <param>
       <key>_rotation</key>
