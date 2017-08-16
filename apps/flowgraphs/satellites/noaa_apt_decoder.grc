@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.10'?>
+<?grc format='1' created='3.7.11'?>
 <flow_graph>
   <timestamp>Mon Apr 10 23:26:02 2017</timestamp>
   <block>
@@ -151,7 +151,7 @@ in acceptable levels especially for embedded devices.</value>
     </param>
     <param>
       <key>cutoff_freq</key>
-      <value>0.2</value>
+      <value>0.4</value>
     </param>
     <param>
       <key>_enabled</key>
