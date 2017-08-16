@@ -1109,7 +1109,7 @@ TX sampling rate</value>
     </param>
     <param>
       <key>value</key>
-      <value>/tmp/iq.dat</value>
+      <value>/home/talos/iq.dat</value>
     </param>
   </block>
   <block>
