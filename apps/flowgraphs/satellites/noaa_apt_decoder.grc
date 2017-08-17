@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.10'?>
+<?grc format='1' created='3.7.11'?>
 <flow_graph>
   <timestamp>Mon Apr 10 23:26:02 2017</timestamp>
   <block>
@@ -313,7 +313,7 @@ TX sampling rate</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(935, 123)</value>
+      <value>(968, 124)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2803,7 +2803,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>fbw</key>
@@ -2811,7 +2811,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(944, 232)</value>
+      <value>(992, 232)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3081,7 +3081,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>filename</key>
@@ -3089,7 +3089,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1176, 236)</value>
+      <value>(1224, 236)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3132,7 +3132,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(520, 320)</value>
+      <value>(568, 320)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3403,7 +3403,7 @@ we shift the LO a little further</value>
     </param>
     <param>
       <key>value</key>
-      <value>1</value>
+      <value>0</value>
     </param>
   </block>
   <block>
